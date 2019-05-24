@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxlala.demo.mapper.CustomerMapper">
+    <select id="queryCusById" parameterType="int" resultType="Customer">
+        SELECT * FROM cts_customer WHERE cid = #{id}
+    </select>
+
+    <select id="queryCusByName" parameterType="String" resultType="Customer">
+        select * FROM cts_customer where cname LIKE #{cname}
+    </select>
+
+    <select id="queryCusByName2" parameterType="String" resultType="Customer">
+        select * FROM cts_customer where cname LIKE '${value}%'
+    </select>
+
+    <insert id="saveCus" parameterType="Customer">
+        INSERT into cts_customer (cname,email) values (#{cname},#{email})
+    </insert>
+
+    <insert id="saveCus2" parameterType="Customer">
+        <selectKey keyColumn="cid" keyProperty="cid" order="AFTER" resultType="int">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT into cts_customer (cname,email) values (#{cname},#{email})
+    </insert>
+
+    <update id="updateCusById" parameterType="Customer">
+        update cts_customer set cname = #{cname} where cid = #{cid}
+    </update>
+
+    <delete id="deleteCusById" parameterType="int">
+        delete from cts_customer where cid = #{cid}
+    </delete>
+</mapper>
