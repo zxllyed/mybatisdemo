@@ -10,4 +10,6 @@ public interface ClassesMapper {
     Classes getClass2(Integer id);
 
     Classes getClass3(Integer id);
+
+    Classes getClass4(Integer id);
 }

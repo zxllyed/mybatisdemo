@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxlala.demo.mapper.CustomerMapper">
+    <select id="queryCusById" parameterType="int" resultType="Customer">
+        SELECT * FROM cts_customer WHERE cid = #{id}
+    </select>
+
+    <select id="queryCusByName" parameterType="String" resultType="Customer">
+        select * FROM cts_customer where cname LIKE #{cname}
+    </select>
+
+    <insert id="saveCus" parameterType="Customer">
+        INSERT into cts_customer (cname,email) values (#{cname},#{email})
+    </insert>
+</mapper>

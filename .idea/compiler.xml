@@ -9,6 +9,7 @@
         <module name="mybatisday01" />
         <module name="mybatisday02" />
         <module name="mybatisday03" />
+        <module name="mybatisday04" />
       </profile>
     </annotationProcessing>
   </component>

@@ -41,4 +41,15 @@ public class ClassesMapperTest {
 
         sqlSession.close();
     }
+
+    @Test
+    public void getClass4() {
+        SqlSession sqlSession = SqlSessionFactoryUtils.getSqlSessionFactory().openSession();
+        ClassesMapper classesMapper = sqlSession.getMapper(ClassesMapper.class);
+
+            Classes class1 = classesMapper.getClass4(1);
+        System.out.println(class1);
+
+        sqlSession.close();
+    }
 }

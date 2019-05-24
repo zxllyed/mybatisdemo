@@ -48,19 +48,22 @@
         </collection>
     </resultMap>
     <!-- 一对多 方法二： -->
-    <select id="">
-
+    <select id="getClass4" parameterType="int" resultMap="ClassResultMap4">
+        SELECT * FROM class WHERE c_id=#{id}
     </select>
 
-    <resultMap id="" type="">
-
+    <resultMap id="ClassResultMap4" type="classes">
+        <id property="id" column="c_id"/>
+        <result property="name" column="c_name"/>
+        <association property="teacher" column="teacher_id" javaType="teacher" select="getTeacher2"/>
+        <collection property="students" column="c_id" ofType="student" select="getStudent"/>
     </resultMap>
 
-    <select id="">
-
+    <select id="getTeacher2" parameterType="int" resultType="teacher">
+        SELECT t_id id,t_name name FROM teacher WHERE t_id = #{id}
     </select>
 
-    <select id="">
-
+    <select id="getStudent" parameterType="int" resultType="student">
+        SELECT s_id id,s_name name FROM student WHERE class_id = #{id}
     </select>
 </mapper>
